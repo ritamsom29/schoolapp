@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: schoolapp_backend
+    restart: always
+    environment:
+      - DATABASE_URL=sqlite:///./school_attendance.db
+      - SECRET_KEY=production-secure-random-secret-key-replace-me
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=480
+      - CORS_ORIGINS=["http://localhost", "http://localhost:80", "http://localhost:5173"]
+    volumes:
+      - ./backend/school_attendance.db:/app/school_attendance.db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: schoolapp_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

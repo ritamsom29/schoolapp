@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+/* Custom base styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Table styles */
+.table-container {
+  overflow-x: auto;
+}
