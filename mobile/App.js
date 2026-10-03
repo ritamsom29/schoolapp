@@ -102,30 +102,30 @@ export default function App() {
   };
 
   const loadDashboard = async () => {
-  try {
-    const data = await mobileApi.getTeacherDashboard();
+    try {
+      const data = await mobileApi.getTeacherDashboard();
+      setTeacherData(data);
+    } catch (e) {
+      if (e.response?.status === 401) {
+        // Stale or invalid JWT token from previous local testing
+        await AsyncStorage.clear();
+        setUser(null);
+        setSelectedClass(null);
+        return;
+      }
 
-    console.log('DASHBOARD DATA:', data);
+      const serverMessage =
+        e.response?.data?.detail ||
+        e.response?.data?.message ||
+        e.message ||
+        'Unknown error';
 
-    setTeacherData(data);
-  } catch (e) {
-    console.log('DASHBOARD ERROR:', e);
-    console.log('DASHBOARD ERROR MESSAGE:', e.message);
-    console.log('DASHBOARD ERROR RESPONSE:', e.response?.data);
-    console.log('DASHBOARD ERROR STATUS:', e.response?.status);
-
-    const serverMessage =
-      e.response?.data?.detail ||
-      e.response?.data?.message ||
-      e.message ||
-      'Unknown error';
-
-    Alert.alert(
-      'Dashboard Error',
-      `Status: ${e.response?.status || 'No response'}\n\n${serverMessage}`
-    );
-  }
-};
+      Alert.alert(
+        'Dashboard Error',
+        `Status: ${e.response?.status || 'No response'}\n\n${serverMessage}`
+      );
+    }
+  };
 
   const handleSelectClass = async (cls) => {
     setSelectedClass(cls);
