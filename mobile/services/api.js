@@ -1,11 +1,11 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://10.0.2.2:8000';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://schoolapp-5xjy.onrender.com';
 
 const client = axios.create({
   baseURL: `${API_BASE_URL}/api`,
-  timeout: 5000,
+  timeout: 30000,
 });
 
 client.interceptors.request.use(async (config) => {
