@@ -42,6 +42,29 @@ export const mobileApi = {
     return res.data;
   },
 
+  getAttendanceHistory: async (params = {}) => {
+    const res = await client.get('/attendance', { params });
+    return res.data;
+  },
+
+  getHolidays: async () => {
+    const res = await client.get('/holidays');
+    return res.data;
+  },
+
+  getMonthlyReport: async (params) => {
+    const res = await client.get('/reports/monthly', { params });
+    return res.data;
+  },
+
+  changePassword: async (currentPassword, newPassword) => {
+    const res = await client.post('/auth/change-password', {
+      current_password: currentPassword,
+      new_password: newPassword,
+    });
+    return res.data;
+  },
+
   // ── Offline Queue Management (Phase 11) ──────────────────────
   saveOfflineAttendance: async (payload) => {
     try {
