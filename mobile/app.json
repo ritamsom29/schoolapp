@@ -6,9 +6,11 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.schoolapp.teacher"
     },
     "android": {
+      "package": "com.schoolapp.teacher",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       }
