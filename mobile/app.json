@@ -18,6 +18,11 @@
     "plugins": [
       "expo-asset",
       "expo-status-bar"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "fb32b1b0-fff6-464f-a881-ea94ee83c83d"
+      }
+    }
   }
 }

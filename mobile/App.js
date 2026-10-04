@@ -23,8 +23,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('classes');
 
   // Login form states
-  const [username, setUsername] = useState('rajesh');
-  const [password, setPassword] = useState('teacher123');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
 
   // Dashboard states
@@ -306,7 +306,8 @@ export default function App() {
 
           <TextInput
             style={styles.input}
-            placeholder="Username (e.g. rajesh)"
+            placeholder="Username or Teacher ID"
+            placeholderTextColor="#94a3b8"
             value={username}
             onChangeText={setUsername}
             autoCapitalize="none"
@@ -315,6 +316,7 @@ export default function App() {
           <TextInput
             style={styles.input}
             placeholder="Password"
+            placeholderTextColor="#94a3b8"
             value={password}
             onChangeText={setPassword}
             secureTextEntry
